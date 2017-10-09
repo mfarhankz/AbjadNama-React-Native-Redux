@@ -9,14 +9,17 @@ import {
     Platform,
     StyleSheet,
     Text,
-    View
+    View,
+    TextInput
 } from 'react-native';
 
 export default class App extends Component<{}> {
-    constructor(){
-      super();
+    constructor(props) {
+        super(props);
+        this.state = { text: '' };
     }
-    farhan = 'فرحان';
+    countNumber  = 0;
+    nameNumber;
     urduAlphabet = [
         { آ: 1 },
         { ا: 1 },
@@ -60,11 +63,28 @@ export default class App extends Component<{}> {
         { ے: 10 }
     ];
     render() {
-        console.log(this.farhan.split(''));
+        if(this.state.text){
+            this.countNumber = 0;
+            for (const key in this.urduAlphabet) {
+                const keyVal = this.urduAlphabet[key]
+                for (i = 0; i < this.state.text.length; i++) {
+                    const val = this.state.text[i];
+                    if(keyVal[val]){
+                        this.countNumber = this.countNumber + keyVal[val];
+                    }
+                }
+            }
+        }
         return (
             <View style={styles.container}>
-              <Text style={styles.welcome}>
-              </Text>
+                <TextInput style={styles.inputFiled}
+                   onChangeText={(text) => this.setState({text})}
+                   value={this.state.text}
+                />
+
+                <Text style={styles.welcome}>
+                    {this.countNumber}
+                </Text>
             </View>
         );
     }
@@ -87,4 +107,12 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
+    inputFiled:{
+        height:40,
+        width: 300,
+        backgroundColor:'#fff',
+        borderColor: '#333',
+        borderWidth: 1,
+        padding: 10
+    }
 });
