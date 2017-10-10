@@ -13,7 +13,7 @@ import {
     TextInput
 } from 'react-native';
 
-export default class App extends Component<{}> {
+export default class App extends Component<> {
     constructor(props) {
         super(props);
         this.state = { text: '' };
@@ -79,8 +79,7 @@ export default class App extends Component<{}> {
             <View style={styles.container}>
                 <TextInput style={styles.inputFiled}
                    onChangeText={(text) => this.setState({text})}
-                   value={this.state.text}
-                />
+                   value={this.state.text} />
 
                 <Text style={styles.welcome}>
                     {this.countNumber}
