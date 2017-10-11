@@ -19,7 +19,6 @@ export default class App extends Component<> {
         this.state = { text: '' };
     }
     countNumber  = 0;
-    nameNumber;
     urduAlphabet = [
         { آ: 1 },
         { ا: 1 },
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#19ff20',
     },
     welcome: {
         fontSize: 20,
