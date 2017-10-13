@@ -12,6 +12,8 @@ import {
     View,
     TextInput
 } from 'react-native';
+import { Header } from 'components/common/Header'
+import Header from "./components/common/Header";
 
 export default class App extends Component<> {
     constructor(props) {
@@ -76,6 +78,7 @@ export default class App extends Component<> {
         }
         return (
             <View style={styles.container}>
+                <Header/>
                 <TextInput style={styles.inputFiled}
                    onChangeText={(text) => this.setState({text})}
                    value={this.state.text} />
