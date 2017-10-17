@@ -12,8 +12,8 @@ import {
     View,
     TextInput
 } from 'react-native';
-import { Header } from 'components/common/Header'
 import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
 
 export default class App extends Component<> {
     constructor(props) {
@@ -86,6 +86,7 @@ export default class App extends Component<> {
                 <Text style={styles.welcome}>
                     {this.countNumber}
                 </Text>
+                <Footer/>
             </View>
         );
     }
