@@ -6,7 +6,6 @@ export default class Footer extends Component<> {
         return (
             <View>
                 <Text>Footer</Text>
-                <Text>Here</Text>
             </View>
         );
     }
