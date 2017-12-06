@@ -16,11 +16,9 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 
 export default class App extends Component<> {
-    constructor(props) {
-        super(props);
-        this.state = { text: '' };
-    }
     countNumber  = 0;
+    countNumber2  = 0;
+    date = new Date().getDay().toString();
     urduAlphabet = [
         { آ: 1 },
         { ا: 1 },
@@ -63,6 +61,20 @@ export default class App extends Component<> {
         { ی: 10 },
         { ے: 10 }
     ];
+    day = [
+        {0 : 387},
+        {1 : 367},
+        {2 : 422},
+        {3 : 566},
+        {4 : 412},
+        {5 : 188},
+        {6 : 357}
+    ];
+    constructor(props) {
+        super(props);
+        this.state = { text: '' }, { text2: '' } ;
+        console.log(this.date);
+    }
     render() {
         if(this.state.text){
             this.countNumber = 0;
@@ -76,6 +88,18 @@ export default class App extends Component<> {
                 }
             }
         }
+        if(this.state.text2){
+            this.countNumber2 = 0;
+            for (const key in this.urduAlphabet) {
+                const keyVal = this.urduAlphabet[key]
+                for (i = 0; i < this.state.text2.length; i++) {
+                    const val = this.state.text2[i];
+                    if(keyVal[val]){
+                        this.countNumber2 = this.countNumber2 + keyVal[val];
+                    }
+                }
+            }
+        }
         return (
             <View style={styles.container}>
                 <Header/>
@@ -83,8 +107,15 @@ export default class App extends Component<> {
                    onChangeText={(text) => this.setState({text})}
                    value={this.state.text} />
 
+                <TextInput style={styles.inputFiled}
+                           onChangeText={(text2) => this.setState({text2})}
+                           value={this.state.text2} />
+
                 <Text style={styles.welcome}>
-                    {this.countNumber}
+                    {this.countNumber + this.countNumber2}
+                </Text>
+                <Text style={styles.welcome}>
+                    {this.date}
                 </Text>
                 <Footer/>
             </View>
