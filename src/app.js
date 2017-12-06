@@ -18,6 +18,7 @@ import Footer from "./components/common/Footer";
 export default class App extends Component<> {
     countNumber  = 0;
     countNumber2  = 0;
+    dayNumber  = 0;
     date = new Date().getDay().toString();
     urduAlphabet = [
         { آ: 1 },
@@ -100,6 +101,19 @@ export default class App extends Component<> {
                 }
             }
         }
+        if(this.date){
+            this.dayNumber = 0;
+            for (const key in this.day) {
+                const keyVal = this.day[key]
+                for (i = 0; i < this.date.length; i++) {
+                    const val = this.date[i];
+                    if(keyVal[val]){
+                        this.dayNumber = this.dayNumber + keyVal[val];
+                    }
+                }
+                console.log(this.dayNumber);
+            }
+        }
         return (
             <View style={styles.container}>
                 <Header/>
@@ -115,7 +129,7 @@ export default class App extends Component<> {
                     {this.countNumber + this.countNumber2}
                 </Text>
                 <Text style={styles.welcome}>
-                    {this.date}
+                    Day: {this.dayNumber}
                 </Text>
                 <Footer/>
             </View>
