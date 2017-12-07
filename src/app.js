@@ -10,15 +10,20 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput
+    TextInput,
+    Button
 } from 'react-native';
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
-
+const onPressLearnMore = () => {
+    this.total = this.countNumber + this.dayNumber;
+    console.log(this.total);
+};
 export default class App extends Component<> {
     countNumber  = 0;
     countNumber2  = 0;
     dayNumber  = 0;
+    total  = 0;
     date = new Date().getDay().toString();
     urduAlphabet = [
         { آ: 1 },
@@ -68,13 +73,15 @@ export default class App extends Component<> {
         {2 : 422},
         {3 : 566},
         {4 : 412},
-        {5 : 188},
+        {5 : 118},
         {6 : 357}
     ];
+
+
     constructor(props) {
         super(props);
         this.state = { text: '' }, { text2: '' } ;
-        console.log(this.date);
+
     }
     render() {
         if(this.state.text){
@@ -111,9 +118,9 @@ export default class App extends Component<> {
                         this.dayNumber = this.dayNumber + keyVal[val];
                     }
                 }
-                console.log(this.dayNumber);
             }
         }
+
         return (
             <View style={styles.container}>
                 <Header/>
@@ -131,6 +138,15 @@ export default class App extends Component<> {
                 <Text style={styles.welcome}>
                     Day: {this.dayNumber}
                 </Text>
+                <Text style={styles.welcome}>
+                    Day: {this.total = this.countNumber + this.dayNumber}
+                    day: {this.total / 3}
+                </Text>
+                <Button
+                    onPress={onPressLearnMore}
+                    title="Learn More"
+                    accessibilityLabel="Learn more about this purple button"
+                />
                 <Footer/>
             </View>
         );
